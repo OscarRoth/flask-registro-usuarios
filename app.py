@@ -14,15 +14,6 @@ def formulario():
         carrera = request.form['carrera']
         comentarios = request.form['comentarios']
 
-        return render_template(
-            'resultado.html',
-            nombre=nombre,
-            email=email,
-            edad=edad,
-            carrera=carrera,
-            comentarios=comentarios
-        )
-
         if edad == '':
             errores.append('La edad es obligatoria.')
 
@@ -37,9 +28,24 @@ def formulario():
             errores.append('El formato del email no es válido.')
 
         if errores:
-            return render_template('formulario.html', errores=errores, nombre=nombre, email=email)
+            return render_template(
+                'formulario.html',
+                errores=errores,
+                nombre=nombre,
+                email=email,
+                edad=edad,
+                carrera=carrera,
+                comentarios=comentarios
+            )
 
-        return render_template('resultado.html', nombre=nombre, email=email)
+        return render_template(
+            'resultado.html',
+            nombre=nombre,
+            email=email,
+            edad=edad,
+            carrera=carrera,
+            comentarios=comentarios
+        )
 
     return render_template('formulario.html')
     
