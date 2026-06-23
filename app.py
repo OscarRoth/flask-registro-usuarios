@@ -3,6 +3,8 @@ import re
 
 app = Flask(__name__)
 
+usuarios = []
+
 @app.route('/', methods=['GET', 'POST'])
 def formulario():
     errores = []
@@ -37,6 +39,14 @@ def formulario():
                 carrera=carrera,
                 comentarios=comentarios
             )
+        
+        usuarios.append({
+            'nombre': nombre,
+            'email': email,
+            'edad': edad,
+            'carrera': carrera,
+            'comentarios': comentarios
+        })
 
         return render_template(
             'resultado.html',
@@ -48,6 +58,10 @@ def formulario():
         )
 
     return render_template('formulario.html')
+
+@app.route('/usuarios')
+def listar_usuarios():
+    return render_template('usuarios.html', usuarios=usuarios)
     
 if __name__ == '__main__':
     app.run(debug=True)
