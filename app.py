@@ -10,6 +10,24 @@ def formulario():
     if request.method == 'POST':
         nombre = request.form['nombre']
         email = request.form['email']
+        edad = request.form['edad']
+        carrera = request.form['carrera']
+        comentarios = request.form['comentarios']
+
+        return render_template(
+            'resultado.html',
+            nombre=nombre,
+            email=email,
+            edad=edad,
+            carrera=carrera,
+            comentarios=comentarios
+        )
+
+        if edad == '':
+            errores.append('La edad es obligatoria.')
+
+        if carrera == '':
+            errores.append('Debe seleccionar una carrera.')
 
         if nombre.strip() == '':
             errores.append('El nombre no puede estar vacío.')

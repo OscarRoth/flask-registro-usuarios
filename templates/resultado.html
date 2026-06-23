@@ -1,11 +1,21 @@
-{% extends 'base.html' %}
-
 {% block title %}
 Resultado
 {% endblock %}
 
 {% block content %}
+
 <h2>Datos recibidos</h2>
-<p>Nombre: {{ nombre }}</p>
-<p>Email: {{ email }}</p>
+
+<p><strong>Nombre:</strong> {{ nombre }}</p>
+
+<p><strong>Email:</strong> {{ email }}</p>
+
+<p><strong>Edad:</strong> {{ edad }}</p>
+
+<p><strong>Carrera:</strong> {{ carrera }}</p>
+
+<p><strong>Comentarios:</strong></p>
+
+<p>{{ comentarios }}</p>
+
 {% endblock %}
